@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './basecss/aos.css';
+import './basecss/bootstrap.min.css';
+import './basecss/font-awesome.min.css'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
