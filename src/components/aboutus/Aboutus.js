@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-import './aboutus.css';
+import './aboutus.scss';
 import '../../basecss/socialicons.css';
 import '../../basecss/typography.css';
 import trainerOne from '../../images/team/team-image.jpg';

@@ -1,7 +1,7 @@
 import { Component } from "react";
 
 import '../../basecss/typography.css';
-import './frontpage.css';
+import './frontpage.scss';
 
 class Frontpage extends Component {
 

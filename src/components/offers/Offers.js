@@ -1,16 +1,58 @@
-import { Component } from "react";
+import { Component } from 'react';
+import SingleOffer from '../SingleOffer/SingleOffer.js';
 
-import '../../basecss/base.css';
+import offersService from '../../services/offersServices.js';
+
+import '../../basecss/base.scss';
 import '../../basecss/typography.css';
-import './offers.css';
+import './offers.scss';
 
+import img from '../../images/class/yoga-class.jpg';
 
 class Offers extends Component {
     constructor(props){
-        super(props)
+        super(props);
+
+
+        this.state = {
+            offers: [],  
+        }
+    }
+    num = 0;
+
+    icreace() {
+        // normally ID in DB Table is used as key, but now since you use an arr....
+        this.num++;
+        return this.num.toString();
+    }
+
+    componentDidMount() {
+
+        offersService.getAllOffers()
+        .then(offers => {
+            this.setState(() => ({offers: this.state.offers}));
+        });
+
+       // fetch('http://localhost:3000/offers')
+        //    .then(res => res.json())
+        //    .then(returnedOffers => {
+        //        this.setState(() => ({returnedOffers: this.state.offers}));
+       //     });
     }
 
     render() {
+
+        const renderedOffers =  this.props.listOfOffers?.map(el => {
+                return <SingleOffer
+                key={this.icreace()}
+                name={el.name}
+                price={el.price}
+                visits={el.visits}
+                duration={el.duration}
+                description={el.description}
+                />
+            });
+            console.log(renderedOffers);
         return(
        
             <section className="class section" id="class">
@@ -22,55 +64,9 @@ class Offers extends Component {
        
                                        <h2 >Our Training Classes</h2>
                                     </div>
-       
-                                   <div className="col-lg-4 col-md-6 col-12">
-                                       <div className="class-thumb">
-                                           <img src="images/class/yoga-class.jpg" className="img-fluid" alt="Class" />
-       
-                                           <div className="class-info">
-                                               <h3 className="mb-1">Yoga</h3>
-       
-                                               <span><strong>Trained by</strong> - Bella</span>
-       
-                                               <span className="class-price">$50</span>
-       
-                                               <p className="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                                           </div>
-                                       </div>
-                                   </div>
-       
-                                   <div className="mt-5 mt-lg-0 mt-md-0 col-lg-4 col-md-6 col-12">
-                                       <div className="class-thumb">
-                                           <img src="images/class/crossfit-class.jpg" className="img-fluid" alt="Class" />
-       
-                                           <div className="class-info">
-                                               <h3 className="mb-1">Areobic</h3>
-       
-                                               <span><strong>Trained by</strong> - Mary</span>
-       
-                                               <span className="class-price">$66</span>
-       
-                                               <p className="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                                           </div>
-                                       </div>
-                                   </div>
-       
-                                   <div className="mt-5 mt-lg-0 col-lg-4 col-md-6 col-12">
-                                       <div className="class-thumb">
-                                           <img src="images/class/cardio-class.jpg" class="img-fluid" alt="Class" />
-       
-                                           <div className="class-info">
-                                               <h3 className="mb-1">Cardio</h3>
-       
-                                               <span><strong>Trained by</strong> - Cathe</span>
-       
-                                               <span className="class-price">$75</span>
-       
-                                               <p className="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                                           </div>
-                                       </div>
-                                   </div>
-       
+
+                                    {renderedOffers}
+
                            </div>
                       </div>
             </section>

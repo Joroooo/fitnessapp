@@ -1,6 +1,7 @@
 import { Component } from "react";
-import '../../../basecss/base.css';
-import './header.css';
+import { Link, NavLink } from 'react-router-dom';
+import '../../../basecss/base.scss';
+import './header.scss';
 import '../../../basecss/typography.css';
 import '../../../basecss/buttons.css';
 import '../../../basecss/socialicons.css';
@@ -20,7 +21,7 @@ class Header extends Component {
             <nav className="navbar navbar-expand-lg fixed-top">
             <div className="container">
     
-                <a className="navbar-brand" href="index.html">Just Fit</a>
+                <NavLink to="/" className="navbar-brand" >Just Fit</NavLink>
     
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -30,23 +31,23 @@ class Header extends Component {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ml-lg-auto">
                         <li className="nav-item">
-                            <a href="#home" className="nav-link smoothScroll">Home</a>
+                            <NavLink to="/" exact={true} className="nav-link smoothScroll">Home</NavLink>
                         </li>
     
                         <li className="nav-item">
-                            <a href="#about" className="nav-link smoothScroll">About Us</a>
+                            <NavLink to="/about" activeClassName="active" exact={true} className="nav-link smoothScroll">About Us</NavLink>
                         </li>
     
                         <li className="nav-item">
-                            <a href="#class" className="nav-link smoothScroll">Classes</a>
+                            <NavLink to="/offers" activeClassName="active" exact={true} className="nav-link smoothScroll">Offers</NavLink>
                         </li>
     
                         <li className="nav-item">
-                            <a href="#schedule" className="nav-link smoothScroll">Schedules</a>
+                            <NavLink to="/schedule" activeClassName="active" exact={true} className="nav-link smoothScroll">Schedules</NavLink>
                         </li>
     
                         <li className="nav-item">
-                            <a href="#contact" className="nav-link smoothScroll">Contact</a>
+                            <NavLink to="/contact" activeClassName="active" exact={true} className="nav-link smoothScroll">Contact</NavLink>
                         </li>
                     </ul>
     
