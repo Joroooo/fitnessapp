@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, Suspense } from 'react';
 import SingleOffer from '../SingleOffer/SingleOffer.js';
 
 import offersService from '../../services/offersServices.js';
@@ -43,6 +43,7 @@ class Offers extends Component {
     render() {
 
         const renderedOffers =  this.props.listOfOffers?.map(el => {
+            
                 return <SingleOffer
                 key={this.icreace()}
                 name={el.name}
@@ -64,9 +65,10 @@ class Offers extends Component {
        
                                        <h2 >Our Training Classes</h2>
                                     </div>
+            <Suspense fallback= {<div>Loading...</div>}>
 
                                     {renderedOffers}
-
+</Suspense>
                            </div>
                       </div>
             </section>
